@@ -1,11 +1,21 @@
 <script lang="ts">
-  export let fontSize: string;
+  export let fontSize: number;
+  export let text: string;
+  export let contained: boolean;
+  export let containerMaxWidth: number;
 </script>
 
 <body>
   <div class="frame vw12">
-    <h2>Viewport Width 12</h2>
-    <h1 style={`font-size: ${fontSize}vw`}>Upgrading e-commerce for good</h1>
+    {#if contained}
+      <div class="container" style={`max-width: ${containerMaxWidth}px`}>
+        <h2>Viewport Width {fontSize}</h2>
+        <h1 style={`font-size: ${fontSize}vw`}>{text}</h1>
+      </div>
+    {:else}
+      <h2>Viewport Width {fontSize}</h2>
+      <h1 style={`font-size: ${fontSize}vw`}>{text}</h1>
+    {/if}
   </div>
 </body>
 
@@ -13,13 +23,13 @@
   @font-face {
     font-family: "Tomato Grotesk";
     font-weight: 400;
-    src: url("regular.otf");
+    src: url("../regular.otf");
   }
 
   @font-face {
     font-family: "Tomato Grotesk Semibold";
     font-weight: 600;
-    src: url("semibold.otf");
+    src: url("../semibold.otf");
   }
 
   body {
@@ -50,5 +60,9 @@
     padding: 20px 0;
     width: 100%;
     border-bottom: 1px solid var(--black);
+  }
+
+  .container {
+    margin: 0 auto;
   }
 </style>

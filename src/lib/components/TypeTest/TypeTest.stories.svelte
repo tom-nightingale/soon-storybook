@@ -6,7 +6,10 @@
     title: "Components/TypeTest",
     component: TypeTest,
     argTypes: {
+      text: { control: "text" },
       fontSize: { control: "text" },
+      contained: { control: "boolean" },
+      containerMaxWidth: { control: "number" },
     },
   };
 </script>
@@ -18,6 +21,9 @@
 <Story
   name="Primary"
   args={{
+    text: "Upgrading e-commerce for good",
     fontSize: "12",
+    contained: false,
+    containerMaxWidth: 1600,
   }}
 />
